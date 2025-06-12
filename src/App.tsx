@@ -72,7 +72,7 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  function jumpTo(nextMove) {
+  function jumpTo(nextMove: any) {
     setCurrentMove(nextMove);
   }
 
@@ -102,7 +102,7 @@ export default function Game() {
   );
 }
 
-function calculateWinner(squares) {
+function calculateWinner(squares: any) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
