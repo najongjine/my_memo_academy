@@ -11,9 +11,13 @@ function Square({ value, onSquareClick }: SquareProps) {
     </button>
   );
 }
-
-function Board({ xIsNext, squares, onPlay }) {
-  function handleClick(i) {
+type BoardProps = {
+  xIsNext: any;
+  squares: any;
+  onPlay: any;
+};
+function Board({ xIsNext, squares, onPlay }: BoardProps) {
+  function handleClick(i: any) {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
