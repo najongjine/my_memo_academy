@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -16,10 +16,17 @@ function App() {
    * 타입은 string, 초기값은 "쓰레기값"
    */
   const [text, setText] = useState<string>("쓰레기값");
+  const [time, setTime] = useState<string>(new Date().toLocaleTimeString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e?.target?.value ?? "");
   };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
