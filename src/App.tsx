@@ -20,15 +20,15 @@ function App() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e?.target?.value ?? "");
   };
-  const handleChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    text2 = e?.target?.value ?? "";
-    console.log(`text: ${text2}`);
-  };
   return (
     <div className="App">
       <header className="App-header">
-        <input type="text" value={text2} onChange={handleChange2} />
-        <div>당신이 입력한 값:{text2}</div>
+        /* input box에 text 에 있는 값 보여주고, 타이핑 이벤트가 발생하면,
+        handleChange 함수를 갔다 써라. */
+        <input type="text" value={text} onChange={handleChange} />
+        /* text 는 화면 바인딩이 된 변수. text 값이 바뀌면, 바로바로 갱신이 되서
+        출력 */
+        <div>당신이 입력한 값:{text}</div>
       </header>
     </div>
   );
