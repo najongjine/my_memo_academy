@@ -21,15 +21,23 @@ function App() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e?.target?.value ?? "");
   };
+  /*
+  react 화면이 보여지면, 무조건 실행.
+   */
   useEffect(() => {
+    // 본문
+    // setInterval : 1초에 한번씩 실행되는 forloop
     const timer = setInterval(() => {
+      // 1초에 한번씩 시간 갱신 시킴
       setTime(new Date().toLocaleTimeString());
     }, 1000);
     return () => clearInterval(timer);
+    // 본문 끝
   }, []);
   return (
     <div className="App">
       <header className="App-header">
+        <div>{time}</div>
         /* input box에 text 에 있는 값 보여주고, 타이핑 이벤트가 발생하면,
         handleChange 함수를 갔다 써라. */
         <input type="text" value={text} onChange={handleChange} />
