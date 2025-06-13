@@ -9,6 +9,7 @@ import "./App.css";
 function App() {
   // 일반 변수선언 방법. 화면 바인딩이 안됨. 하지만 메모리 연산은 잘됨
   let text2 = "쓰레기값";
+  let time2: any;
   /**
    * 화면 바인딩 변수&조작기 선언방법
    * 변수 이름은 text, 변수 조작함수는 setText(), useState 이라는 리엑트
@@ -30,6 +31,7 @@ function App() {
     const timer = setInterval(() => {
       // 1초에 한번씩 시간 갱신 시킴
       setTime(new Date().toLocaleTimeString());
+      time2 = new Date().toLocaleTimeString();
     }, 1000);
     return () => clearInterval(timer);
     // 본문 끝
@@ -37,7 +39,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>{time}</div>
+        <div>화면 바인딩 :{time}</div>
+        <div>그냥 변수 :{time2}</div>
         /* input box에 text 에 있는 값 보여주고, 타이핑 이벤트가 발생하면,
         handleChange 함수를 갔다 써라. */
         <input type="text" value={text} onChange={handleChange} />
