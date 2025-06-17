@@ -24,7 +24,7 @@ const Header: React.FC = () => {
       <h1>나의 메모장</h1>
       <nav>
         <a href="/">홈</a>
-        <a href="/about">TodoList</a>
+        <a href="/todo_list">TodoList</a>
       </nav>
     </header>
   );
