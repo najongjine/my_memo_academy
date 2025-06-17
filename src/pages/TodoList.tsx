@@ -50,7 +50,12 @@ const TodoList: React.FC = () => {
            bg-gray-100 px-3 py-1 rounded"
           >
             <span>{todo}</span>
-            <button onClick={() => handleDelete(index)}>삭제</button>
+            <button
+              onClick={() => handleDelete(index)}
+              className="text-red-500 hover:text-red-700"
+            >
+              삭제
+            </button>
           </li>
         ))}
       </ul>
