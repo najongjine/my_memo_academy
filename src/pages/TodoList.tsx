@@ -28,6 +28,7 @@ const TodoList: React.FC = () => {
           onChange={handleChange}
           placeholder="메모를 입력하세요"
         />
+        <button onClick={handleAdd}>추가</button>
       </div>
     </>
   );
