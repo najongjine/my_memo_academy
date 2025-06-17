@@ -21,6 +21,14 @@ const TodoList: React.FC = () => {
   return (
     <>
       <h2>📝 Todo List 페이지입니다!</h2>
+      <div>
+        <input
+          type="text"
+          value={inputText}
+          onChange={handleChange}
+          placeholder="메모를 입력하세요"
+        />
+      </div>
     </>
   );
 };
