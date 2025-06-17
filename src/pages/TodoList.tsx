@@ -12,6 +12,7 @@ const TodoList: React.FC = () => {
     if (!inputText?.trim()) return;
     setTodos([...todos, inputText]);
     setInputText("");
+    console.log(`todos: ${todos}`);
   };
 
   const handleDelete = (index: number) => {
@@ -30,6 +31,14 @@ const TodoList: React.FC = () => {
         />
         <button onClick={handleAdd}>추가</button>
       </div>
+      <ul>
+        {todos.map((todo, index) => (
+          <li>
+            <span>{todo}</span>
+            <button>삭제</button>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
