@@ -21,8 +21,8 @@ const TodoList: React.FC = () => {
   };
   return (
     <div className="max-w-md mx-auto mt-5 p-4 bg-white rounded shadow">
-      <h2>📝 Todo List 페이지입니다!</h2>
-      <div>
+      <h2 className="text-xl font-bold mb-4">📝 Todo List 페이지입니다!</h2>
+      <div className="flex gap-2">
         <input
           type="text"
           value={inputText}
