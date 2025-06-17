@@ -27,6 +27,9 @@ const TodoList: React.FC = () => {
           type="text"
           value={inputText}
           onChange={handleChange}
+          onKeyDown={(e) => {
+            if (e?.key == "Enter") handleAdd();
+          }}
           placeholder="메모를 입력하세요"
           className="flex-1 border border-gray-300 rounded px-2 py-1"
         />
