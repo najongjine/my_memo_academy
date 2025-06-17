@@ -34,7 +34,13 @@ const TodoList: React.FC = () => {
         onClick={handleAdd}   클릭 이벤트가 발생하면
         handleAdd 함수를 갔다 써라
         */}
-        <button onClick={handleAdd}>추가</button>
+        <button
+          onClick={handleAdd}
+          className="bg-blue-500 text-white px-4 py-1 rounded
+         hover:bg-blue-600"
+        >
+          추가
+        </button>
       </div>
       <ul>
         {todos.map((todo, index) => (
