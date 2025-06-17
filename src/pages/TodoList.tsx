@@ -42,9 +42,13 @@ const TodoList: React.FC = () => {
           추가
         </button>
       </div>
-      <ul>
+      <ul className="mt-5">
         {todos.map((todo, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            className="flex justify-between items-center mb-2
+           bg-gray-100 px-3 py-1 rounded"
+          >
             <span>{todo}</span>
             <button onClick={() => handleDelete(index)}>삭제</button>
           </li>
