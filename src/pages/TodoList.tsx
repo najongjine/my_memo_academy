@@ -10,9 +10,9 @@ const TodoList: React.FC = () => {
 
   const handleAdd = () => {
     if (!inputText?.trim()) return;
+    // 자바스크립트 문법중에서 리스트에 데이터 추가하는 가장짧은 문법
     setTodos([...todos, inputText]);
     setInputText("");
-    console.log(`todos: ${todos}`);
   };
 
   const handleDelete = (index: number) => {
@@ -20,7 +20,7 @@ const TodoList: React.FC = () => {
     setTodos(newTodos);
   };
   return (
-    <>
+    <div className="max-w-md mx-auto mt-5 p-4 bg-white rounded shadow">
       <h2>📝 Todo List 페이지입니다!</h2>
       <div>
         <input
@@ -29,17 +29,21 @@ const TodoList: React.FC = () => {
           onChange={handleChange}
           placeholder="메모를 입력하세요"
         />
+        {/* 버튼 클릭을 하면 onClick 이벤트가 발생
+        onClick={handleAdd}   클릭 이벤트가 발생하면
+        handleAdd 함수를 갔다 써라
+        */}
         <button onClick={handleAdd}>추가</button>
       </div>
       <ul>
         {todos.map((todo, index) => (
-          <li>
+          <li key={index}>
             <span>{todo}</span>
-            <button>삭제</button>
+            <button onClick={() => handleDelete(index)}>삭제</button>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 
