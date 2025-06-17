@@ -28,6 +28,7 @@ const TodoList: React.FC = () => {
           value={inputText}
           onChange={handleChange}
           placeholder="메모를 입력하세요"
+          className="flex-1 border border-gray-300 rounded px-2 py-1"
         />
         {/* 버튼 클릭을 하면 onClick 이벤트가 발생
         onClick={handleAdd}   클릭 이벤트가 발생하면
