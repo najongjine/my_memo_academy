@@ -20,6 +20,7 @@ const TodoList: React.FC = () => {
       date: new Date().toISOString().split("T")[0], // YYYY-MM-DD 형식
     };
 
+    // 새로운 데이터 + 기존꺼
     setTodos([newTodo, ...todos]);
     setTitle("");
     setContent("");
