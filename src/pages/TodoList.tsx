@@ -68,7 +68,7 @@ const TodoList: React.FC = () => {
         {todos.map((todo, index) => (
           <li key={index} className="border-b pb-2">
             <div className="font-semibold text-lg">{todo.title}</div>
-            <div className="text-gray-600">
+            <div className="text-gray-600 whitespace-pre-line">
               {todo.content.length > 20
                 ? `${todo.content.substring(0, 20)}...`
                 : todo.content}
