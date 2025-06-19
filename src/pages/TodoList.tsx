@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
 type Todo = {
+  idp: number;
   title: string;
   content: string;
-  date: string;
+  userIdp: number;
+  createdDt: string;
 };
 
 const TodoList: React.FC = () => {
