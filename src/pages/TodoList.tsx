@@ -16,14 +16,6 @@ const TodoList: React.FC = () => {
   const handleAdd = () => {
     if (!title.trim() || !content.trim()) return;
 
-    const newTodo: Todo = {
-      title,
-      content,
-      date: new Date().toISOString().split("T")[0], // YYYY-MM-DD 형식
-    };
-
-    // 새로운 데이터 + 기존꺼
-    setTodos([newTodo, ...todos]);
     setTitle("");
     setContent("");
   };
@@ -76,7 +68,7 @@ const TodoList: React.FC = () => {
                 ? `${todo.content.substring(0, 20)}...`
                 : todo.content}
             </div>
-            <div className="text-sm text-gray-400">{todo.date}</div>
+            <div className="text-sm text-gray-400">{todo.createdDt}</div>
             <div className="mt-2 flex gap-3">
               <button
                 onClick={() => handleUpdate(index)}
