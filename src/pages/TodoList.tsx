@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 type Todo = {
   idp: number;
@@ -12,6 +13,18 @@ const TodoList: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  // ✅ 서버에서 목록 불러오기
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/memo/list")
+      .then((res) => {
+        setTodos(res.data); // 서버에서 받은 데이터를 todos 상태에 저장
+      })
+      .catch((err) => {
+        console.error("❌ 데이터 불러오기 실패:", err);
+      });
+  }, []); // 최초 1회만 실행
 
   const handleAdd = () => {
     if (!title.trim() || !content.trim()) return;
