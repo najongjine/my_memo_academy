@@ -19,7 +19,9 @@ const TodoList: React.FC = () => {
     axios
       .get("http://localhost:3001/api/memo/list")
       .then((res) => {
-        setTodos(res.data); // 서버에서 받은 데이터를 todos 상태에 저장
+        console.log(`## res:`, res);
+        setTodos(res?.data?.data ?? []); // 서버에서 받은 데이터를 todos 상태에 저장
+        console.log(`## todos:`, todos);
       })
       .catch((err) => {
         console.error("❌ 데이터 불러오기 실패:", err);
