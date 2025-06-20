@@ -12,6 +12,14 @@ const MemoEditor: React.FC = () => {
         value={title}
         onChange={(e) => setTitle(e?.target?.value ?? "")}
       />
+      <textarea
+        placeholder="내용을 입력하세요"
+        value={content}
+        onChange={(e) => setTitle(e?.target?.value ?? "")}
+      />
+      <div>
+        <button>저장</button>
+      </div>
     </div>
   );
 };
