@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import TodoList from "./pages/TodoList";
+import MemoEditor from "./pages/MemoEditor";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           {/* 여기 안에 있는 것만 바뀜 */}
           <Route path="/" element={<Home />} />
           <Route path="/todo_list" element={<TodoList />} />
+          <Route path="/memo_editor" element={<MemoEditor />} />
         </Route>
       </Routes>
     </BrowserRouter>
