@@ -1,8 +1,26 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const MemoEditor: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [idp, setIdp] = useState(0);
+
+  const handleSave = async () => {
+    if (!title?.trim() || !content?.trim()) {
+      alert("제목이과 내용을 입력해주세요");
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/memo/upsert",
+        { idp, title, content }
+      );
+    } catch (error) {
+      console.error();
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
       <div className="text-2xl font-bold mb-6 text-center">메모 작성</div>
