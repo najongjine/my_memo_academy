@@ -16,11 +16,18 @@ const MemoEditor: React.FC = () => {
         const idp = Number(query.get("idp") ?? 0);
         setIdp(idp); // ① 먼저 idp 저장
 
-        let res = await axios.get(
+        let res: any = await axios.get(
           `http://localhost:3001/api/memo/get_memo_by_idp?idp=${idp}`
         );
         res = res?.data;
         console.log(`## res:`, res);
+
+        if (!res?.success) {
+          alert(`서버 에러. ${res?.message}`);
+        }
+        res = res?.data;
+        setTitle(res?.title ?? "");
+        setContent(res?.content ?? "");
       } catch (err: any) {
         console.error("❌ 데이터 불러오기 실패:", err);
         alert(`데이터 불러오기 실패 ${err?.message ?? ""}`);
