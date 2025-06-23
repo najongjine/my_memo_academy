@@ -10,9 +10,21 @@ const MemoEditor: React.FC = () => {
   const [idp, setIdp] = useState(0);
 
   useEffect(() => {
-    const query = new URLSearchParams(location?.search);
-    const idp = Number(query.get("idp") ?? 0);
-    setIdp(idp);
+    const _useEffect = async () => {
+      try {
+        const query = new URLSearchParams(location?.search);
+        const idp = Number(query.get("idp") ?? 0);
+        setIdp(idp); // ① 먼저 idp 저장
+
+        let res = await axios.get("http://localhost:3001/api/memo/list");
+        res = res?.data;
+        console.log(`## res:`, res);
+      } catch (err: any) {
+        console.error("❌ 데이터 불러오기 실패:", err);
+        alert(`데이터 불러오기 실패 ${err?.message ?? ""}`);
+      }
+    };
+    _useEffect(); // async 함수 실행
   }, []);
 
   const handleSave = async () => {
