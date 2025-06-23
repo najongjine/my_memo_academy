@@ -1,12 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const MemoEditor: React.FC = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [idp, setIdp] = useState(0);
+
+  useEffect(() => {
+    const query = new URLSearchParams(location?.search);
+    const idp = Number(query.get("idp") ?? 0);
+  }, []);
 
   const handleSave = async () => {
     if (!title?.trim() || !content?.trim()) {
