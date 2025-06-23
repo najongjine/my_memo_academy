@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const MemoEditor: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [idp, setIdp] = useState(0);
@@ -11,6 +12,7 @@ const MemoEditor: React.FC = () => {
   useEffect(() => {
     const query = new URLSearchParams(location?.search);
     const idp = Number(query.get("idp") ?? 0);
+    setIdp(idp);
   }, []);
 
   const handleSave = async () => {
@@ -33,6 +35,7 @@ const MemoEditor: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
+      <div>{idp}</div>
       <div className="text-2xl font-bold mb-6 text-center">메모 작성</div>
       <input
         className="w-full p-3 mb-4 border-b-2 border-gray-300 outline-none text-xl font-semibold placeholder-gray-400"
