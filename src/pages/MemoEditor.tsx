@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MemoEditor: React.FC = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [idp, setIdp] = useState(0);
@@ -16,6 +18,8 @@ const MemoEditor: React.FC = () => {
         "http://localhost:3001/api/memo/upsert",
         { idp, title, content }
       );
+      alert("작성이 되었습니다");
+      navigate("/todo_list"); // ✅ 작성 성공 시 페이지 이동
     } catch (error: any) {
       console.error(`!!! /api/memo/upsert error: `, error?.message);
       alert(`메모 작성에 실패했습니다. ${error?.message ?? ""}`);
