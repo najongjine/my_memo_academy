@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Todo = {
   idp: number;
@@ -10,6 +11,7 @@ type Todo = {
 };
 
 const TodoList: React.FC = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -40,11 +42,8 @@ const TodoList: React.FC = () => {
     setTodos(updated);
   };
 
-  const handleUpdate = (index: number) => {
-    const todo = todos[index];
-    setTitle(todo.title);
-    setContent(todo.content);
-    handleDelete(index); // 기존 거 삭제하고 수정 모드처럼 추가되게
+  const handleUpdate = (idp: number) => {
+    navigate(`/memo_editor?id=${idp}`);
   };
 
   return (
