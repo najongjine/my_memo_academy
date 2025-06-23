@@ -16,8 +16,9 @@ const MemoEditor: React.FC = () => {
         "http://localhost:3001/api/memo/upsert",
         { idp, title, content }
       );
-    } catch (error) {
-      console.error();
+    } catch (error: any) {
+      console.error(`!!! /api/memo/upsert error: `, error?.message);
+      alert(`메모 작성에 실패했습니다. ${error?.message ?? ""}`);
     }
   };
 
@@ -38,7 +39,10 @@ const MemoEditor: React.FC = () => {
         onChange={(e) => setContent(e?.target?.value ?? "")}
       />
       <div className="text-right mt-6">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-xl shadow">
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-xl shadow"
+          onClick={handleSave}
+        >
           저장
         </button>
       </div>
