@@ -85,7 +85,7 @@ const TodoList: React.FC = () => {
             <div className="text-sm text-gray-400">{todo.createdDt}</div>
             <div className="mt-2 flex gap-3">
               <button
-                onClick={() => handleUpdate(index)}
+                onClick={() => handleUpdate(todo?.idp)}
                 className="text-blue-600 hover:underline"
               >
                 update
