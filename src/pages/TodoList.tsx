@@ -43,7 +43,7 @@ const TodoList: React.FC = () => {
   };
 
   const handleUpdate = (idp: number) => {
-    navigate(`/memo_editor?id=${idp}`);
+    navigate(`/memo_editor?idp=${idp}`);
   };
 
   return (
