@@ -54,7 +54,12 @@ const TodoList: React.FC = () => {
       <ul className="space-y-4">
         {todos.map((todo, index) => (
           <li key={index} className="border-b pb-2">
-            <div className="font-semibold text-lg">{todo.title}</div>
+            <div
+              className="font-semibold text-lg"
+              onClick={() => navigate(`/memo_detail?idp=${todo?.idp ?? 0}`)}
+            >
+              {todo.title}
+            </div>
             <div
               className="text-gray-600"
               dangerouslySetInnerHTML={{
