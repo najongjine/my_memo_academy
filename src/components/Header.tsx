@@ -26,7 +26,7 @@ const Header: React.FC = () => {
       <nav>
         <Link to="/">홈</Link>
         <Link to="/todo_list">TodoList</Link>
-        <Link to="/memo_editor">메모작성</Link>
+        <Link to="/memo_editorv3">메모작성</Link>
       </nav>
     </header>
   );

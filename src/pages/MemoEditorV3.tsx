@@ -22,6 +22,12 @@ const MemoEditorV3: React.FC = () => {
         const idp = Number(query.get("idp") ?? 0);
         setIdp(idp);
 
+        if (!idp) {
+          setTitle("");
+          setContent("");
+          editorRef.current?.getInstance().setHTML("");
+          return;
+        }
         let res: any = await axios.get(
           `http://localhost:3001/api/memo/get_memo_by_idp?idp=${idp}`
         );
@@ -45,7 +51,15 @@ const MemoEditorV3: React.FC = () => {
       }
     };
     _useEffect();
-  }, []);
+
+    // ✅ cleanup 함수: 컴포넌트 unmount 시 상태 초기화
+    return () => {
+      setTitle("");
+      setContent("");
+      setIdp(0);
+      editorRef.current?.getInstance().setHTML(""); // 에디터 내용도 초기화
+    };
+  }, [location?.search]);
 
   const handleSave = async () => {
     const content = editorRef.current?.getInstance().getHTML() ?? "";
