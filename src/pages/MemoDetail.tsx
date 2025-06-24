@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Viewer } from "@toast-ui/react-editor";
 import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 interface MemoData {
   idp: number;
@@ -19,11 +20,13 @@ const MemoDetail: React.FC = () => {
     const fetchMemo = async () => {
       if (!idp) return;
       try {
-        const response = await fetch(
-          `http://localhost:3001/api/memo/get_memo_by_idp?idp=${idp}`
+        const response = await axios.get(
+          `http://localhost:3001/api/memo/get_memo_by_idp`,
+          {
+            params: { idp },
+          }
         );
-        const data = await response.json();
-        setMemo(data);
+        setMemo(response?.data?.data);
       } catch (error: any) {
         console.error(
           "메모 데이터를 불러오는 중 오류 발생:",
