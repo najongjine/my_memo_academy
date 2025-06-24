@@ -55,7 +55,7 @@ const TodoList: React.FC = () => {
         {todos.map((todo, index) => (
           <li key={index} className="border-b pb-2">
             <div
-              className="font-semibold text-lg"
+              className="font-semibold text-lg text-blue-600 hover:underline cursor-pointer block w-full py-1"
               onClick={() => navigate(`/memo_detail?idp=${todo?.idp ?? 0}`)}
             >
               {todo.title}
