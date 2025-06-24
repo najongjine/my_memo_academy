@@ -103,7 +103,7 @@ const MemoEditorV3: React.FC = () => {
               const formData = new FormData();
               formData.append("image", blob);
 
-              const apiKey = "07c1e5d07ef4c497e700e5b7c0416269"; // ✅ 여기에 발급받은 API 키 입력
+              const apiKey = ""; // ✅ 여기에 발급받은 API 키 입력
               const res = await axios.post(
                 `https://api.imgbb.com/1/upload?key=${apiKey}`,
                 formData
