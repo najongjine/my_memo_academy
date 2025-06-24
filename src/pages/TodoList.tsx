@@ -43,45 +43,27 @@ const TodoList: React.FC = () => {
   };
 
   const handleUpdate = (idp: number) => {
-    navigate(`/memo_editor?idp=${idp}`);
+    navigate(`/memo_editorv2?idp=${idp}`);
   };
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded shadow">
       <h2 className="text-2xl font-bold mb-6">📝 Todo List 페이지입니다!</h2>
 
-      {/* 입력 폼 */}
-      <div className="flex flex-col gap-2 mb-6">
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="제목 입력"
-          className="border border-gray-300 rounded px-2 py-1"
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="내용 입력"
-          className="border border-gray-300 rounded px-2 py-1"
-        />
-        <button
-          onClick={handleAdd}
-          className="bg-blue-500 text-white px-4 py-2 rounded w-24"
-        >
-          New
-        </button>
-      </div>
-
       {/* 리스트 출력 */}
       <ul className="space-y-4">
         {todos.map((todo, index) => (
           <li key={index} className="border-b pb-2">
             <div className="font-semibold text-lg">{todo.title}</div>
-            <div className="text-gray-600 whitespace-pre-line">
-              {todo.content.length > 20
-                ? `${todo.content.substring(0, 20)}...`
-                : todo.content}
-            </div>
+            <div
+              className="text-gray-600"
+              dangerouslySetInnerHTML={{
+                __html:
+                  todo.content.length > 20
+                    ? `${todo.content.substring(0, 100)}...`
+                    : todo.content,
+              }}
+            ></div>
             <div className="text-sm text-gray-400">{todo.createdDt}</div>
             <div className="mt-2 flex gap-3">
               <button

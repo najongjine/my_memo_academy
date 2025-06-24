@@ -4,6 +4,8 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import TodoList from "./pages/TodoList";
 import MemoEditor from "./pages/MemoEditor";
+import MemoEditorV2 from "./pages/MemoEditorV2";
+import "@toast-ui/editor/dist/toastui-editor.css";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/todo_list" element={<TodoList />} />
           <Route path="/memo_editor" element={<MemoEditor />} />
+          <Route path="/memo_editorv2" element={<MemoEditorV2 />} />
         </Route>
       </Routes>
     </BrowserRouter>
