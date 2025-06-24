@@ -43,7 +43,7 @@ const TodoList: React.FC = () => {
   };
 
   const handleUpdate = (idp: number) => {
-    navigate(`/memo_editorv2?idp=${idp}`);
+    navigate(`/memo_editorv3?idp=${idp}`);
   };
 
   return (
@@ -60,7 +60,7 @@ const TodoList: React.FC = () => {
               dangerouslySetInnerHTML={{
                 __html:
                   todo.content.length > 20
-                    ? `${todo.content.substring(0, 100)}...`
+                    ? `${todo.content.substring(0, 20)}...`
                     : todo.content,
               }}
             ></div>
