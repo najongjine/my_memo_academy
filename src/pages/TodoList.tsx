@@ -37,9 +37,23 @@ const TodoList: React.FC = () => {
     setContent("");
   };
 
-  const handleDelete = (index: number) => {
-    const updated = todos.filter((_, i) => i !== index);
-    setTodos(updated);
+  const handleDelete = async (idp: number) => {
+    try {
+      const res = await axios.post("http://localhost:3001/api/memo/delete", {
+        idp: idp,
+      });
+
+      if (res?.data?.success) {
+        // 클라이언트 상태에서도 해당 idp를 가진 메모 삭제
+        const updated = todos.filter((todo) => todo.idp !== idp);
+        setTodos(updated);
+      } else {
+        alert(`삭제 실패: ${res.data.message}`);
+      }
+    } catch (err: any) {
+      console.error("❌ 삭제 요청 실패:", err);
+      alert("서버 오류로 삭제에 실패했습니다.");
+    }
   };
 
   const handleUpdate = (idp: number) => {
@@ -78,7 +92,7 @@ const TodoList: React.FC = () => {
                 update
               </button>
               <button
-                onClick={() => handleDelete(index)}
+                onClick={() => handleDelete(todo?.idp)}
                 className="text-red-600 hover:underline"
               >
                 delete
