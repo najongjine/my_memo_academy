@@ -21,6 +21,7 @@ const Login: React.FC = () => {
       if (!response?.success) {
         console.error("로그인 실패:", response?.message ?? "");
         setError(`로그인 실패. ${response?.message ?? ""}`);
+        return;
       }
       console.log("로그인 성공:", response?.data);
       // 로그인 성공 시 처리
