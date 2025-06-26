@@ -25,10 +25,10 @@ const Login: React.FC = () => {
       }
       console.log("로그인 성공:", response?.data);
       // 로그인 성공 시 처리
-      useAuthStore.setState(
-        response?.data?.userData,
-        response?.data?.userToken ?? ""
-      );
+      useAuthStore.getState().setAuthData({
+        userData: response?.data?.userData,
+        userToken: response?.data?.userToken ?? "",
+      });
     } catch (error: any) {
       // 로그인 실패 시 처리
       console.error("로그인 실패:", error.response?.data || error.message);
