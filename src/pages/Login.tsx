@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useAuthStore } from "../store/authStore";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -8,8 +9,29 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-    } catch (err) {
-      setError("로그인 실패. 사용자명 또는 비밀번호를 확인하세요.");
+      setError("");
+      let response: any = await axios.post(
+        "http://localhost:3001/api/auth/login",
+        {
+          username,
+          password,
+        }
+      );
+      response = response?.data;
+      if (!response?.success) {
+        console.error("로그인 실패:", response?.message ?? "");
+        setError(`로그인 실패. ${response?.message ?? ""}`);
+      }
+      // 로그인 성공 시 처리
+      useAuthStore.setState(
+        response?.data?.userData,
+        response?.data?.userToken ?? ""
+      );
+      console.log("로그인 성공:", response.data);
+    } catch (error: any) {
+      // 로그인 실패 시 처리
+      console.error("로그인 실패:", error.response?.data || error.message);
+      setError(`로그인 실패. ${error?.message ?? ""}`);
     }
   };
 
