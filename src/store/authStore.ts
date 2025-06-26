@@ -1,21 +1,34 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-interface CounterState {
-  count: number;
-  increase: () => void;
-  reset: () => void;
+interface UserRole {
+  idp: number;
+  roleName: string;
 }
 
-export const useAuthStore = create<CounterState>()(
+interface UserData {
+  idp: number;
+  username: string;
+  password: string;
+  tUserRoles: UserRole[];
+}
+
+interface AuthState {
+  userData: UserData | null;
+  userToken: string | null;
+  setAuthData: (data: { userData: UserData; userToken: string }) => void;
+  resetAuthData: () => void;
+}
+
+export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
-      count: 0,
-      increase: () => set((state) => ({ count: state.count + 1 })),
-      reset: () => set({ count: 0 }),
+      userData: null,
+      userToken: null,
+      setAuthData: ({ userData, userToken }) => set({ userData, userToken }),
+      resetAuthData: () => set({ userData: null, userToken: null }),
     }),
     {
-      name: "counter-storage", // localStorage에 저장될 key 이름
+      name: "auth-storage", // localStorage에 저장될 이름
     }
   )
 );
