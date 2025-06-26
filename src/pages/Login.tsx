@@ -22,12 +22,12 @@ const Login: React.FC = () => {
         console.error("로그인 실패:", response?.message ?? "");
         setError(`로그인 실패. ${response?.message ?? ""}`);
       }
+      console.log("로그인 성공:", response?.data);
       // 로그인 성공 시 처리
       useAuthStore.setState(
         response?.data?.userData,
         response?.data?.userToken ?? ""
       );
-      console.log("로그인 성공:", response.data);
     } catch (error: any) {
       // 로그인 실패 시 처리
       console.error("로그인 실패:", error.response?.data || error.message);
