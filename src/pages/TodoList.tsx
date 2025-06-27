@@ -30,7 +30,7 @@ const TodoList: React.FC = () => {
           console.error("❌ 데이터 불러오기 실패:", err);
         });
     };
-    _useEffect;
+    _useEffect();
   }, []); // 최초 1회만 실행
 
   const handleAdd = () => {
