@@ -18,16 +18,19 @@ const TodoList: React.FC = () => {
 
   // ✅ 서버에서 목록 불러오기
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/memo/list")
-      .then((res) => {
-        console.log(`## res:`, res);
-        setTodos(res?.data?.data ?? []); // 서버에서 받은 데이터를 todos 상태에 저장
-        console.log(`## todos:`, todos);
-      })
-      .catch((err) => {
-        console.error("❌ 데이터 불러오기 실패:", err);
-      });
+    const _useEffect = async () => {
+      await axios
+        .get("http://localhost:3001/api/memo/list")
+        .then((res) => {
+          console.log(`## res:`, res);
+          setTodos(res?.data?.data ?? []); // 서버에서 받은 데이터를 todos 상태에 저장
+          console.log(`## todos:`, todos);
+        })
+        .catch((err) => {
+          console.error("❌ 데이터 불러오기 실패:", err);
+        });
+    };
+    _useEffect;
   }, []); // 최초 1회만 실행
 
   const handleAdd = () => {
