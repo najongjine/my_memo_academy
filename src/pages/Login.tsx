@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -29,6 +31,7 @@ const Login: React.FC = () => {
         userData: response?.data?.userData,
         userToken: response?.data?.userToken ?? "",
       });
+      navigate("/");
     } catch (error: any) {
       // 로그인 실패 시 처리
       console.error("로그인 실패:", error.response?.data || error.message);
