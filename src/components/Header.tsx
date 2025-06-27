@@ -37,7 +37,7 @@ const Header: React.FC = () => {
           {userData ? (
             <>
               <span className="username">
-                {userData.username || "사용자"} 님
+                {userData?.username || "사용자"} 님
               </span>
               <button className="logout-btn" onClick={handleLogout}>
                 로그아웃
