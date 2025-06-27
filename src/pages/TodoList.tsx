@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 
 type Todo = {
   idp: number;
@@ -11,6 +12,7 @@ type Todo = {
 };
 
 const TodoList: React.FC = () => {
+  const userData = useAuthStore((state) => state.userData);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
