@@ -44,9 +44,14 @@ const Header: React.FC = () => {
               </button>
             </>
           ) : (
-            <Link className="login-link" to="/login">
-              로그인
-            </Link>
+            <>
+              <Link className="login-link" to="/login">
+                로그인
+              </Link>
+              <Link className="login-link" to="/register">
+                회원가입
+              </Link>
+            </>
           )}
         </div>
         <h1 className="title">나의 메모장</h1>
