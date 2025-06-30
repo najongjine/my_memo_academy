@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
-import { validateToken } from "../hooks/LoginValidate";
+import { useValidateToken } from "../hooks/LoginValidate";
 
 type Todo = {
   idp: number;
@@ -22,7 +22,7 @@ const TodoList: React.FC = () => {
   // 로그인이 안 되었으면 로그인 페이지로 이동
   useEffect(() => {
     const _useEffect = async () => {
-      const sValidate = (await validateToken()) ?? "";
+      const sValidate = (await useValidateToken()) ?? "";
       if (sValidate.includes("false")) {
         navigate("/login");
       } else if (sValidate.includes("서버에러")) {

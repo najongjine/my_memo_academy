@@ -7,7 +7,7 @@ import { useAuthStore } from "../store/authStore";
  * 토큰 정상: "true"
  * 서버에러: "서버에러 ..."
  */
-export const validateToken = async (): Promise<string> => {
+export const useValidateToken = async (): Promise<string> => {
   const userToken = useAuthStore((state) => state?.userToken ?? "");
 
   try {
