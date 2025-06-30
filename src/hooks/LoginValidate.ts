@@ -24,7 +24,7 @@ export const useValidateToken = () => {
         );
         res = res?.data;
         console.log(`## useValidateToken :`, res);
-        if (!res.data?.success) {
+        if (!res.success) {
           navigate("/login");
         }
       } catch (err: any) {
