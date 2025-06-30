@@ -2,6 +2,11 @@
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 
+/**
+ * 토큰 이상함 : "false"
+ * 토큰 정상: "true"
+ * 서버에러: "서버에러 ..."
+ */
 export const validateToken = async (): Promise<string> => {
   const userToken = useAuthStore((state) => state?.userToken ?? "");
 
@@ -15,6 +20,6 @@ export const validateToken = async (): Promise<string> => {
     }
     return "true";
   } catch (err: any) {
-    return `서버에서. ${err?.message ?? ""}`;
+    return `서버에러. ${err?.message ?? ""}`;
   }
 };
