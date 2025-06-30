@@ -13,25 +13,12 @@ type Todo = {
 };
 
 const TodoList: React.FC = () => {
+  useValidateToken();
   const userData = useAuthStore((state) => state.userData);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
-
-  // 로그인이 안 되었으면 로그인 페이지로 이동
-  useEffect(() => {
-    const _useEffect = async () => {
-      const sValidate = (await useValidateToken()) ?? "";
-      if (sValidate.includes("false")) {
-        navigate("/login");
-      } else if (sValidate.includes("서버에러")) {
-        alert(sValidate);
-        navigate("/");
-      }
-    };
-    _useEffect();
-  }, [userData, navigate]);
 
   // ✅ 서버에서 목록 불러오기
   useEffect(() => {
