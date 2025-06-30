@@ -6,10 +6,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Editor } from "@toast-ui/react-editor";
 import { useValidateToken } from "../hooks/LoginValidate";
+import { useAuthStore } from "../store/authStore";
 //import "@toast-ui/editor/dist/toastui-editor.css";
 
 const MemoEditorV3: React.FC = () => {
   useValidateToken();
+  const userToken = useAuthStore((state) => state?.userToken ?? "");
   const editorRef = useRef<Editor>(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,7 +74,12 @@ const MemoEditorV3: React.FC = () => {
     try {
       const response = await axios.post(
         "http://localhost:3001/api/memo/upsert",
-        { idp, title, content }
+        { idp, title, content },
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
       );
       alert("작성이 되었습니다");
       navigate("/todo_list"); // ✅ 작성 성공 시 페이지 이동
