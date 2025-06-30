@@ -29,6 +29,7 @@ export const useValidateToken = () => {
         }
       } catch (err: any) {
         console.error("서버 오류", err);
+        alert(`서버에러 ${err?.message ?? ""}`);
         navigate("/");
       }
     };

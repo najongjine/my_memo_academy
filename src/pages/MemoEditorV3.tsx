@@ -5,9 +5,11 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Editor } from "@toast-ui/react-editor";
+import { useValidateToken } from "../hooks/LoginValidate";
 //import "@toast-ui/editor/dist/toastui-editor.css";
 
 const MemoEditorV3: React.FC = () => {
+  useValidateToken();
   const editorRef = useRef<Editor>(null);
   const navigate = useNavigate();
   const location = useLocation();
