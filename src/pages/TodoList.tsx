@@ -14,6 +14,7 @@ type Todo = {
 
 const TodoList: React.FC = () => {
   useValidateToken();
+  const userToken = useAuthStore((state) => state?.userToken ?? "");
   const userData = useAuthStore((state) => state.userData);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -24,7 +25,11 @@ const TodoList: React.FC = () => {
   useEffect(() => {
     const _useEffect = async () => {
       await axios
-        .get("http://localhost:3001/api/memo/list")
+        .get("http://localhost:3001/api/memo/list", {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
         .then((res) => {
           console.log(`## res:`, res);
           setTodos(res?.data?.data ?? []); // 서버에서 받은 데이터를 todos 상태에 저장
