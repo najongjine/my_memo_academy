@@ -33,7 +33,7 @@ const MemoEditorV3: React.FC = () => {
           return;
         }
         let res: any = await axios.get(
-          `http://localhost:3001/api/memo/get_memo_by_idp?idp=${idp}`
+          `${process.env.REACT_APP_API_URL}/api/memo/get_memo_by_idp?idp=${idp}`
         );
         res = res?.data;
 
@@ -73,7 +73,7 @@ const MemoEditorV3: React.FC = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/memo/upsert",
+        `${process.env.REACT_APP_API_URL}/api/memo/upsert`,
         { idp, title, content },
         {
           headers: {

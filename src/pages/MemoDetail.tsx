@@ -23,7 +23,7 @@ const MemoDetail: React.FC = () => {
       if (!idp) return;
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/memo/get_memo_by_idp`,
+          `${process.env.REACT_APP_API_URL}/api/memo/get_memo_by_idp`,
           {
             params: { idp },
           }

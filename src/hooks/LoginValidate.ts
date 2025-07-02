@@ -17,7 +17,7 @@ export const useValidateToken = () => {
     const checkToken = async () => {
       try {
         let res: any = await axios.post(
-          "http://localhost:3001/api/auth/validate",
+          `${process.env.REACT_APP_API_URL}/api/auth/validate`,
           {
             token: userToken,
           }

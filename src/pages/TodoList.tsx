@@ -25,7 +25,7 @@ const TodoList: React.FC = () => {
   useEffect(() => {
     const _useEffect = async () => {
       await axios
-        .get("http://localhost:3001/api/memo/list", {
+        .get(`${process.env.REACT_APP_API_URL}/api/memo/list`, {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
@@ -51,9 +51,12 @@ const TodoList: React.FC = () => {
 
   const handleDelete = async (idp: number) => {
     try {
-      const res = await axios.post("http://localhost:3001/api/memo/delete", {
-        idp: idp,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/memo/delete`,
+        {
+          idp: idp,
+        }
+      );
 
       if (res?.data?.success) {
         // 클라이언트 상태에서도 해당 idp를 가진 메모 삭제
