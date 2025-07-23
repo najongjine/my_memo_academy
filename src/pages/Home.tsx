@@ -9,6 +9,7 @@ const Home: React.FC = () => {
 
 
   const testfunc1 = async () => {
+    normal_string = "바뀐 시스템 문자열";
     setBindString("바뀐 바인딩 문자열");
     alert(`bind_string : ${bind_string}`);
   }
@@ -19,6 +20,8 @@ const Home: React.FC = () => {
         홈 화면이에요!
       </h2>
       <p>리액트와 타입스크립트를 배워봐요 🎉</p>
+      <div>normal_string:{normal_string}</div>
+      <div>bind_string:{bind_string}</div>
       <br />
       <button className="" onClick={testfunc1}>
         테스트
