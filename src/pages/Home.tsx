@@ -9,7 +9,8 @@ const Home: React.FC = () => {
 
 
   const testfunc1 = async () => {
-    alert(`normal_string : ${normal_string}`);
+    setBindString("바뀐 바인딩 문자열");
+    alert(`bind_string : ${bind_string}`);
   }
 
   return (
