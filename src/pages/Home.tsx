@@ -1,5 +1,9 @@
+/**
+ npm install use-async-stateful
+ */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 
 const Home: React.FC = () => {
   let normal_string = "시스템 문자열";
@@ -21,7 +25,7 @@ const Home: React.FC = () => {
       </h2>
       <p>리액트와 타입스크립트를 배워봐요 🎉</p>
       <div>normal_string:{normal_string}</div>
-      <div>bind_string:{bind_string}</div>
+      <div id="id3">bind_string:{bind_string}</div>
       <br />
       <button className="" onClick={testfunc1}>
         테스트
