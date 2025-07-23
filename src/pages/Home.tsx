@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
+  useEffect(() => { }, []);
+
+  const testfunc1 = async () => {
+    console.log("작동 되네요");
+  }
   return (
     <>
-      <h2 className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <h2 className="justify-center">
         홈 화면이에요!
       </h2>
       <p>리액트와 타입스크립트를 배워봐요 🎉</p>
-      <Link to="/todo_list">
-        <button
-          className="px-6 py-3 bg-gradient-to-r
-        from-green-500 to-indigo-500"
-        >
-          Todo List로 이동
-        </button>
-      </Link>
+      <br />
+      <button className="" onClick={testfunc1}>
+        테스트
+      </button>
     </>
   );
 };
