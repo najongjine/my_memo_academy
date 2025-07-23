@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
+  let normal_string = "시스템 문자열";
+  const [bind_string, setBindString] = useState<string>("바인딩 문자열");
+
   useEffect(() => { }, []);
 
+
   const testfunc1 = async () => {
-    console.log("작동 되네요");
+    alert(`normal_string : ${normal_string}`);
   }
+
   return (
     <>
       <h2 className="justify-center">
