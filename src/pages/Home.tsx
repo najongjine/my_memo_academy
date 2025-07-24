@@ -68,13 +68,14 @@ const Home: React.FC = () => {
               onChange={handleChange}
               rows={5} />
           </div>
+          <button type="submit">
+            저장
+          </button>
         </form>
       </div>
 
       <div>
-        <button className="" onClick={testfunc1}>
-          테스트
-        </button>
+
       </div>
     </>
   );
