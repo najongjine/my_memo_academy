@@ -34,9 +34,18 @@ const Home: React.FC = () => {
       return { ...prev, [name]: value } as Product;
     });
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // 꼭 필요
     if (!product?.title) {
       alert("제목을 입력하세요!!");
+      return;
+    }
+    if (product?.title?.length < 3 || product?.title?.length > 200) {
+      alert("제목은 3~200 자만 가능해요!!");
+      return;
+    }
+    if (product?.price < 10 || product?.price > 10_000) {
+      alert("상품 가격은 10~10,000 까지만 가능해요!!");
       return;
     }
   }
