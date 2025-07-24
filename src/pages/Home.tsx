@@ -25,8 +25,14 @@ const Home: React.FC = () => {
     setBindString("바뀐 바인딩 문자열");
     alert(`bind_string : ${bind_string}`);
   }
-  const handleChange = async () => {
-
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e?.target;
+    setProduct(prev => {
+      if (name == 'price') {
+        return { ...prev, price: Number(value) };
+      }
+      return { ...prev, [name]: value } as Product;
+    });
   }
   const handleSubmit = async () => {
 
