@@ -4,10 +4,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
+type Product = {
+  title: string,
+  price: number,
+  content: string
+}
 const Home: React.FC = () => {
   let normal_string = "시스템 문자열";
   const [bind_string, setBindString] = useState<string>("바인딩 문자열");
+  // 타입 사기치기 기법. 문법오류 쉽게 넘기기
+  const [product, setProduct] = useState<Product>({} as Product);
 
   useEffect(() => { }, []);
 
@@ -21,15 +27,47 @@ const Home: React.FC = () => {
   return (
     <>
       <h2 className="justify-center">
-        홈 화면이에요!
+
       </h2>
-      <p>리액트와 타입스크립트를 배워봐요 🎉</p>
-      <div>normal_string:{normal_string}</div>
-      <div id="id3">bind_string:{bind_string}</div>
+      <div>
+        <div>제품정보:</div>
+        <div>이름: {product?.title}</div>
+        <div>가격: {product?.price}</div>
+        <div>내용: {product?.content}</div>
+      </div>
       <br />
-      <button className="" onClick={testfunc1}>
-        테스트
-      </button>
+
+      <div>
+        <h2>상품 등록</h2>
+        <form onSubmit={ }>
+          <div>
+            <label>이름:</label>
+            <input value={product?.title}
+              name="title"
+              onChange={handleChange} />
+          </div>
+          <div>
+            <label>가격</label>
+            <input value={product?.price}
+              name="price"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>내용:</label>
+            <textarea value={product?.content}
+              name="content"
+              onChange={handleChange}
+              rows={5} />
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <button className="" onClick={testfunc1}>
+          테스트
+        </button>
+      </div>
     </>
   );
 };
