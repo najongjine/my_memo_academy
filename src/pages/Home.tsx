@@ -35,7 +35,10 @@ const Home: React.FC = () => {
     });
   }
   const handleSubmit = async () => {
-
+    if (!product?.title) {
+      alert("제목을 입력하세요!!");
+      return;
+    }
   }
 
   return (
