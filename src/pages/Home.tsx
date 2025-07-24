@@ -25,6 +25,12 @@ const Home: React.FC = () => {
     setBindString("바뀐 바인딩 문자열");
     alert(`bind_string : ${bind_string}`);
   }
+  const handleChange = async () => {
+
+  }
+  const handleSubmit = async () => {
+
+  }
 
   return (
     <>
@@ -41,7 +47,7 @@ const Home: React.FC = () => {
 
       <div>
         <h2>상품 등록</h2>
-        <form onSubmit={ }>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>이름:</label>
             <input value={product?.title}
