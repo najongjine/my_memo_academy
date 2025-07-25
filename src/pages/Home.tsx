@@ -4,7 +4,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // @ts-ignore
-import { useAsyncState } from 'use-async-state';
 
 type Product = {
   title: string,
@@ -71,11 +70,16 @@ const Home: React.FC = () => {
             <input value={product?.title}
               name="title"
               onChange={handleChange} />
+            {!product?.title ? (<><div>이름을 입력해 주세요</div></>) : (<></>)}
+
           </div>
+          <br />
+
           <div>
             <label>가격</label>
-            <input value={product?.price}
+            <input value={product?.price ?? 0}
               name="price"
+              type="number"
               onChange={handleChange}
             />
           </div>
