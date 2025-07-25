@@ -15,6 +15,8 @@ const Home: React.FC = () => {
   const [bind_string, setBindString] = useState<string>("바인딩 문자열");
   // 타입 사기치기 기법. 문법오류 쉽게 넘기기
   const [product, setProduct] = useState<Product>({} as Product);
+  const [samplenumber, setSamplenumber] = useState<number[]>([1, 2, 3, 4, 5]);
+  const [productList, setProductList] = useState<Product[]>([] as Product[]);
 
   useEffect(() => { }, []);
 
@@ -71,6 +73,7 @@ const Home: React.FC = () => {
               name="title"
               onChange={handleChange} />
             {!product?.title ? (<><div>이름을 입력해 주세요</div></>) : (<></>)}
+            {!product?.title && <div>이름을 입력해주세요-2</div>}
 
           </div>
           <br />
@@ -97,8 +100,13 @@ const Home: React.FC = () => {
       </div>
 
       <div>
-
+        <br />
+        <ul>
+          {samplenumber.map((item, index) =>
+            (<li>index:{index}, item: {item}</li>))}
+        </ul>
       </div>
+
     </>
   );
 };
