@@ -16,14 +16,20 @@ react 사람은, html을 보더니, 어짜피 이거 데이터 바꾸고, 데이
 모든것이 다 코딩
  */
 const Test1: React.FC = () => {
+  const fetchData = async () => {
+    try {
+      let response: any = await axios
+        .get("http://localhost:3001/api/test")
+      console.log(`## response: `, response)
+      response = response?.data
+      console.log(`## response.data: `, response)
+    } catch (error: any) {
+
+    }
+  }
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/test1")
-      .then((response: any) => {
-        console.log(`## response: `, response)
-      })
-      .catch((err: any) => {
-      });
+
+
   }, [])
 
   return (
