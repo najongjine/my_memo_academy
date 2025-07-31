@@ -23,16 +23,16 @@ interface TestType {
 
 }
 const Test1: React.FC = () => {
-  const [testData, setTestData] = useState<TestType[]>();
+  const [testData, setTestData] = useState<TestType[]>([]);
   const fetchData = async () => {
     try {
       let response: any = await axios
         .get("http://localhost:3001/api/test")
       console.log(`## response: `, response)
       response = response?.data?.data
-      let data: TestType = response;
+      let data: TestType[] = response;
       console.log(`## response.data: `, response)
-      setTestData(testData);
+      setTestData(data);
     } catch (error: any) {
 
     }
