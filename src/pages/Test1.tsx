@@ -28,13 +28,12 @@ const Test1: React.FC = () => {
     try {
       let response: any = await axios
         .get("http://localhost:3001/api/test")
-      console.log(`## response: `, response)
       response = response?.data?.data
       let data: TestType[] = response;
-      console.log(`## response.data: `, response)
+      console.log(`## response.data: `, data)
       setTestData(data);
     } catch (error: any) {
-
+      console.error(`!!! err: `, error?.message)
     }
   }
   useEffect(() => {
@@ -44,11 +43,12 @@ const Test1: React.FC = () => {
 
   return (
     <div>
-      {testData?.length ?? testData?.map((e, index) => (
-        <div id={e?.id + ""}>
+      {testData?.map((e, index) => (
+        <div >
           <div>{e?.title}</div>
         </div>
       ))}
+      <div>{testData?.length}</div>
     </div>
   );
 };
