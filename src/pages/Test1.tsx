@@ -18,8 +18,9 @@ react 사람은, html을 보더니, 어짜피 이거 데이터 바꾸고, 데이
 const Test1: React.FC = () => {
   useEffect(() => {
     axios
-      .get("")
+      .get("http://localhost:3000/test1")
       .then((response: any) => {
+        console.log(`## response: `, response)
       })
       .catch((err: any) => {
       });
