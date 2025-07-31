@@ -23,6 +23,7 @@ interface TestType {
 
 }
 const Test1: React.FC = () => {
+  const [testData, setTestData] = useState<TestType[]>();
   const fetchData = async () => {
     try {
       let response: any = await axios
@@ -31,6 +32,7 @@ const Test1: React.FC = () => {
       response = response?.data?.data
       let data: TestType = response;
       console.log(`## response.data: `, response)
+      setTestData(testData);
     } catch (error: any) {
 
     }
@@ -42,7 +44,11 @@ const Test1: React.FC = () => {
 
   return (
     <div>
-      <div>test1</div>
+      {testData?.length ?? testData?.map((e, index) => (
+        <div id={e?.id + ""}>
+          <div>{e?.title}</div>
+        </div>
+      ))}
     </div>
   );
 };
