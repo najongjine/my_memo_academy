@@ -9,6 +9,11 @@ import MemoEditorV3 from "./pages/MemoEditorV3";
 import MemoDetail from "./pages/MemoDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+/*
+./ := 현재폴더
+현재폴더 안에 pages 라는 폴더 안에 Test1 이란 파일을 가져와라
+ */
+import Test1 from "./pages/Test1"
 import "@toast-ui/editor/dist/toastui-editor.css";
 
 function App() {
@@ -20,12 +25,11 @@ function App() {
           {/* 여기 안에 있는 것만 바뀜 */}
           <Route path="/" element={<Home />} />
           <Route path="/todo_list" element={<TodoList />} />
-          <Route path="/memo_editor" element={<MemoEditor />} />
-          <Route path="/memo_editorv2" element={<MemoEditorV2 />} />
           <Route path="/memo_editorv3" element={<MemoEditorV3 />} />
           <Route path="/memo_detail" element={<MemoDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/test1" element={<Test1 />} />
         </Route>
       </Routes>
     </BrowserRouter>

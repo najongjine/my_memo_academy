@@ -1,0 +1,35 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useAuthStore } from "../store/authStore";
+import { useNavigate } from "react-router-dom";
+
+/**
+이게 리엑트의 기본 틀.
+react 사람은, html을 보더니, 어짜피 이거 데이터 바꾸고, 데이터 가져오고, 사용자 
+요청 대응하고 하면 자바스크립트 써야하는데, 그냥 자바스크립트 안에 html을 넣어버려서
+다 자바스크립트로 하면 되지 않겠냐!
+
+장점:
+끝내주는 모듈 장착과 화면 갱신
+
+단점:
+모든것이 다 코딩
+ */
+const Test1: React.FC = () => {
+  useEffect(() => {
+    axios
+      .get("")
+      .then((response: any) => {
+      })
+      .catch((err: any) => {
+      });
+  }, [])
+
+  return (
+    <div>
+      <div>test1</div>
+    </div>
+  );
+};
+
+export default Test1;
