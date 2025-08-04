@@ -48,11 +48,22 @@ const Test1: React.FC = () => {
   }
   const handleChange2 = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e?.target;
-
+    setContent(value);
   }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 꼭 필요
+    const data = {
+      id: 0,
+      title: title,
+      content: content,
+    };
 
+    try {
+      const res = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
+      //res.data
+    } catch (err: any) {
+      console.error(err);
+    }
   }
 
   useEffect(() => {
@@ -78,12 +89,14 @@ const Test1: React.FC = () => {
               name="title"
               onChange={handleChange} />
           </div>
+          <div>title: {title}</div>
           <div>
             <label>content:</label>
             <input value={content}
               name="content"
               onChange={handleChange2} />
           </div>
+          <button onClick={handleSubmit}>save</button>
         </form>
       </div>
     </div>
