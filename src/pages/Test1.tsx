@@ -59,7 +59,7 @@ const Test1: React.FC = () => {
     };
 
     try {
-      const res = await axios.post('http', data);
+      const res = await axios.post('http://localhost:3001/api/save', data);
       //res.data
     } catch (err: any) {
       console.error(err);
