@@ -27,6 +27,7 @@ const Test1: React.FC = () => {
   const [testData, setTestData] = useState<TestType[]>([]);
   const [title, setTitle] = useState<string>("")
   const [content, setContent] = useState<string>("")
+  const [itemId, setItemId] = useState<number>(0)
   const fetchData = async () => {
     try {
       let response: any = await axios
@@ -50,10 +51,14 @@ const Test1: React.FC = () => {
     const { name, value } = e?.target;
     setContent(value);
   }
+  const handleChange3 = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e?.target;
+    setItemId(Number(value));
+  }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // 꼭 필요
     const data = {
-      id: 0,
+      id: 10,
       title: title,
       content: content,
     };
@@ -83,6 +88,13 @@ const Test1: React.FC = () => {
       </div>
       <div>
         <form onSubmit={handleSubmit}>
+          <div>
+            <label>id:</label>
+            <input value={itemId}
+              name="id"
+              onChange={handleChange3} />
+          </div>
+
           <div>
             <label>title:</label>
             <input value={title}
