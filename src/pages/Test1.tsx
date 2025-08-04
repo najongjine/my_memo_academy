@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
+import { constants } from "fs/promises";
 
 /**
 이게 리엑트의 기본 틀.
@@ -24,6 +25,8 @@ interface TestType {
 }
 const Test1: React.FC = () => {
   const [testData, setTestData] = useState<TestType[]>([]);
+  const [title, setTitle] = useState<string>("")
+  const [content, setContent] = useState<string>("")
   const fetchData = async () => {
     try {
       let response: any = await axios
@@ -38,6 +41,8 @@ const Test1: React.FC = () => {
       console.error(`!!! err: `, error?.message)
     }
   }
+  const handleSubmit = async () => { }
+  const handleChange = async () => { }
   useEffect(() => {
     fetchData();
 
@@ -57,14 +62,14 @@ const Test1: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label>title:</label>
-            <input value={ }
+            <input value={title}
               name="title"
               onChange={handleChange} />
           </div>
           <div>
             <label>content:</label>
-            <input value={ }
-              name="title"
+            <input value={content}
+              name="content"
               onChange={handleChange} />
           </div>
         </form>
