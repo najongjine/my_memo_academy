@@ -59,7 +59,7 @@ const Test1: React.FC = () => {
     };
 
     try {
-      const res = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
+      const res = await axios.post('http', data);
       //res.data
     } catch (err: any) {
       console.error(err);
