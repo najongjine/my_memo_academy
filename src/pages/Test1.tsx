@@ -28,7 +28,9 @@ const Test1: React.FC = () => {
     try {
       let response: any = await axios
         .get("http://localhost:3001/api/test")
+      console.log(`## response: `, response)
       response = response?.data?.data
+
       let data: TestType[] = response;
       console.log(`## response.data: `, data)
       setTestData(data);
@@ -43,12 +45,30 @@ const Test1: React.FC = () => {
 
   return (
     <div>
-      {testData?.map((e, index) => (
-        <div >
-          <div>{e?.title}</div>
-        </div>
-      ))}
-      <div>{testData?.length}</div>
+      <div>
+        {testData?.map((e, index) => (
+          <div >
+            <div>{e?.title}</div>
+          </div>
+        ))}
+        <div>{testData?.length}</div>
+      </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>title:</label>
+            <input value={ }
+              name="title"
+              onChange={handleChange} />
+          </div>
+          <div>
+            <label>content:</label>
+            <input value={ }
+              name="title"
+              onChange={handleChange} />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
