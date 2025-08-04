@@ -41,8 +41,20 @@ const Test1: React.FC = () => {
       console.error(`!!! err: `, error?.message)
     }
   }
-  const handleSubmit = async () => { }
-  const handleChange = async () => { }
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e?.target;
+    setTitle(value);
+  }
+  const handleChange2 = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e?.target;
+
+  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // 꼭 필요
+
+  }
+
   useEffect(() => {
     fetchData();
 
@@ -70,7 +82,7 @@ const Test1: React.FC = () => {
             <label>content:</label>
             <input value={content}
               name="content"
-              onChange={handleChange} />
+              onChange={handleChange2} />
           </div>
         </form>
       </div>
