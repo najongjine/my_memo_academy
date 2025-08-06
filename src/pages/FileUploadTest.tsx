@@ -55,7 +55,26 @@ const FileUploadTest: React.FC = () => {
 
   return (
     <div>
-      <div></div>
+      <div>
+        <h2>여러 파일 업로드</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>제목:</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e?.target?.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="file" multiple
+              onChange={handleFileChange}
+            />
+          </div>
+          <button type="submit">업로드</button>
+        </form>
+      </div>
     </div>
   );
 };
