@@ -39,7 +39,8 @@ const FileUploadTest: React.FC = () => {
         , {
           headers: { "Content-Type": "multipart/form-data" }
         }
-      )
+      );
+      alert("업로드 성공");
     } catch (error: any) {
       console.error(`!! server error. ${error?.message ?? ""}`);
       alert(`!! server error. ${error?.message ?? ""}`);
