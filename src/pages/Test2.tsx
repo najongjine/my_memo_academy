@@ -4,13 +4,18 @@ const fields = ["Name", "ARR", "Ticket", "Description", "Milestone", "Pricing"];
 
 const NotionStyleForm: React.FC = () => {
   const [slugField, setSlugField] = useState<string>("Name");
-  const [selectedFields, setSelectedFields] = useState<string[]>(["Name", "Ticket"]);
+  const [selectedFields, setSelectedFields] = useState<string[]>(["ARR", "Ticket"]);
+  const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
   const [uploadedFiles, setUploadedFiles] = useState<FileList | null>(null);
 
   const toggleField = (field: string) => {
     setSelectedFields((prev) =>
       prev.includes(field) ? prev.filter((f) => f !== field) : [...prev, field]
     );
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFieldValues((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,14 +40,14 @@ const NotionStyleForm: React.FC = () => {
         </select>
       </div>
 
-      {/* Field List */}
+      {/* Field List with Checkbox + Text Input */}
       <div className="mb-4">
         <label className="block text-sm font-semibold mb-2">Column</label>
         <div className="flex flex-col gap-2">
           {fields.map((field) => (
             <div
               key={field}
-              className="flex items-center justify-between bg-gray-100 px-3 py-2 rounded"
+              className="flex items-center justify-between gap-2 bg-gray-100 px-3 py-2 rounded"
             >
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -51,9 +56,15 @@ const NotionStyleForm: React.FC = () => {
                   onChange={() => toggleField(field)}
                   className="accent-black"
                 />
-                <span className="text-sm">{field}</span>
+                <span className="text-sm w-20">{field}</span>
               </label>
-              <span className="text-sm text-gray-600">{field}</span>
+              <input
+                type="text"
+                value={fieldValues[field] || ""}
+                onChange={(e) => handleInputChange(field, e.target.value)}
+                className="flex-1 text-sm px-2 py-1 border rounded bg-white"
+                placeholder={`Enter ${field}`}
+              />
             </div>
           ))}
         </div>
