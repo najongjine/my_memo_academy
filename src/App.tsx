@@ -10,6 +10,7 @@ import MemoDetail from "./pages/MemoDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import FileUploadTest from "./pages/FileUploadTest";
+import Test2 from "./pages/Test2";
 /*
 ./ := 현재폴더
 현재폴더 안에 pages 라는 폴더 안에 Test1 이란 파일을 가져와라
@@ -31,6 +32,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/test1" element={<Test1 />} />
+          <Route path="/test2" element={<Test2 />} />
           <Route path="/file_upload_test" element={<FileUploadTest />} />
         </Route>
       </Routes>
